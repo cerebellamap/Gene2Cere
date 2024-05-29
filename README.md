@@ -113,6 +113,10 @@ Prediction using the optimal PLSR model based on all samples. Then, we would get
 
 10. A folder named ` "GSVA" `  containing data generated during GSVA, including example GSVA results
 
+# Bugs and Questions
+
+Please contact Kaikai Wang at kaikwang77@gmail.com  and Yaping Wang at wangyaping19@mails.ucas.ac.cn
+
 
 
 
