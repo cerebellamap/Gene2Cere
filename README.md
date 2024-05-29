@@ -1,4 +1,4 @@
-# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
+![image](https://github.com/FanLabCerebellum/Gene2Cere/assets/50706681/bfd5410d-5cfd-4efb-afd4-35fd8a47c55b)# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
@@ -93,3 +93,33 @@ Prediction using the optimal PLSR model based on all samples. Then, we would get
     R
 
     source("./Script/Step04_GSVA.R", encoding = "UTF-8")
+
+# Expected outcomes
+1.A csv file (Step01_Gene_expression.csv) containing the gene expression data for all cerebellar samples
+
+2.A csv file (Step01_Sample_info.csv) that includes information for all cerebellar samples from AHBA, along with the IDP values for each sample
+
+3.An npy file (Step02_Comp_eval_run_100x10cv_all_best_comps.npy) providing information on the optimal component number from the initial 9-fold training of the nested 10-fold cross-validation
+
+4.An npy file (Step02_Comp_eval_run_100x10cv_all_r.npy) containing the correlation between observed and predicted IDP values for the initial 1-fold testing samples, based on the optimal component number within the initial 9-fold training samples
+
+5.A png file (Step02_Comp_eval_visualization.png) illustrating the optimal component number from the nested 10-fold cross-validation
+
+
+6.A csv file (Step02_PLSR_101x10cv_preds.csv) detailing the predictions from 101 repetitions of 10-fold cross-validation
+
+7. A png file (Step02_PLSR_101x10cv_r2median_20.png) showing the prediction performance
+
+8.A csv file (Step03_GCIsig.csv) containing the GCI values and their significance after applying BrainSMASH with multiple comparison test
+
+9.A folder named "BrainSmash" containing data constructed during the BrainSMASH analysis
+
+10.A folder named "GSVA" containing data generated during GSVA, including example GSVA results
+
+
+
+
+
+
+
+
