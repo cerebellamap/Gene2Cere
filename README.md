@@ -20,7 +20,7 @@ We provide an example to show how to uncover the spatio-molecular profiles shape
 
 
 # Usage
-## Step1:Set up environment
+## Step1: Set up environment
 
 
 This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions. It is important to note that the amount of disk space required may vary slightly depending on the operating system used due to differences in filesystem architecture.
@@ -42,7 +42,7 @@ This protocol is compatible with Windows and Unix-based systems (Mac OSX and Lin
 
 Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
 
-## Step2:Input preparation
+## Step2: Input preparation
 Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs would be generated in the example output file '/home/user/Gene2Cere/Output/' which could be changed directly by providing output_dir=yourpath or changed in the Gene2Cere.py
 Note: For the input, either common neuroimaging scan formats (NIfTI - .nii, .nii.gz) can be used. It represents the voxel-wise IDPs of the human cerebellum. The example input was provided in the “Gene2Cere/Data/Input_example/.” The example path is provided as a relative path (e.g., ‘‘Input_example/Input_example.nii’, and the default father file is data_dir, which could be changed directly by providing data_dir=yourpath or changed in the Gene2Cere.py). 
 
@@ -54,7 +54,7 @@ Note: For the input, either common neuroimaging scan formats (NIfTI - .nii, .nii
 
     G2C.Step01_Input(input_file_name='Input_example/Input_example.nii')
 
-## Step3:PLSR prediction the imaging features using gene expression
+## Step3: PLSR prediction the imaging features using gene expression
 
 ### Evaluation of the optimal PLSR component and visualization 
 Note: The num_repeat is the repeat time during the evaluation.
@@ -76,12 +76,12 @@ Note: The n_components are the best component, as can be found in the figure out
      
      G2C.Step02_Model_eval_visulization(n_components,cv_repeat, median_index, median_score) 
 
-# Definition of GCIsig
+# Step4: Definition of GCIsig
 
 Prediction using the optimal PLSR model based on all samples. Then, we would get the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, so we call it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the 10,000 surrogate maps. The gene set with significant GCI is named GCIsig. 
 
     G2C.Step03_GCIsig(n_components, illustrative, permutation_times)
-# GSVA link GCIsig to IDPs 
+# Step5: GSVA link GCIsig to IDPs 
 
 ## Preparation of the mgt file
 
