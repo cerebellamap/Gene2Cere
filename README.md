@@ -13,14 +13,14 @@ To download the version of the code that is last tested, you can clone this repo
 
 
     git clone https://github.com/FanLabCerebellum/Gene2Cere.git
-    cd STARTProtocol/Try/script
+    cd STARProtocols/Try/script
 ## Example
 
 We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
 
-`STARTProtocol/Try/script/Step01_Prediction.ipynb`
+`STARProtocols/Try/script/Step01_Prediction.ipynb`
 
-`STARTProtocol/Try/script/Step04_GSVA.R`
+`STARProtocols/Try/script/Step04_GSVA.R`
     
 # Usage
 ## Step1: Set up environment
