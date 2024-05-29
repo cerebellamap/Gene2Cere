@@ -14,7 +14,7 @@ Extensive imaging-derived phenotypes (IDPs) of the human cerebellum have been ex
 To download the version of the code that is last tested, you can clone this repository:
 
 
-        git clone https://github.com/FanLabCerebellum/Gene2Cere.git
+    git clone https://github.com/FanLabCerebellum/Gene2Cere.git
 
 # Usage
 ## Step1:Set up environment
@@ -38,4 +38,29 @@ This protocol is compatible with Windows and Unix-based systems (Mac OSX and Lin
 5.Install the Python and R dependency packages necessary to run the scripts.
 
 Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
+
+## Step2:Input preparation
+Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs would be generated in the example output file '/home/user/Gene2Cere/Output/' which could be changed directly by providing output_dir=yourpath or changed in the Gene2Cere.py
+Note: For the input, either common neuroimaging scan formats (NIfTI - .nii, .nii.gz) can be used. It represents the voxel-wise IDPs of the human cerebellum. The example input was provided in the “Gene2Cere/Data/Input_example/.” The example path is provided as a relative path (e.g., ‘‘Input_example/Input_example.nii’, and the default father file is data_dir, which could be changed directly by providing data_dir=yourpath or changed in the Gene2Cere.py). 
+
+    import sys
+
+    sys.path.append('/home/user/Gene2Cere/Toolbox/')
+
+    import Gene2Cere.Gene2Cere as G2C
+
+    G2C.Step01_Input(input_file_name='Input_example/Input_example.nii')
+
+## Step3:PLSR prediction the imaging features using gene expression
+
+1.Evaluation of the optimal PLSR component and visualization 
+Note: The num_repeat is the repeat time during the evaluation.
+
+     all_best_comps, all_r = G2C.Step02_Comp_eval_run(num_repeat) 
+     
+     G2C.Step02_Comp_eval_visualization(all_best_comps, all_r)
+
+
+
+
 
