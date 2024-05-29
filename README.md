@@ -1,4 +1,4 @@
-# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
+![image](https://github.com/FanLabCerebellum/Gene2Cere/assets/50706681/d8a4a6de-bae8-40fc-8862-ed2d72dd4d80)# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
@@ -53,14 +53,24 @@ Note: For the input, either common neuroimaging scan formats (NIfTI - .nii, .nii
 
 ## Step3:PLSR prediction the imaging features using gene expression
 
-1.Evaluation of the optimal PLSR component and visualization 
+### Evaluation of the optimal PLSR component and visualization 
 Note: The num_repeat is the repeat time during the evaluation.
 
      all_best_comps, all_r = G2C.Step02_Comp_eval_run(num_repeat) 
      
      G2C.Step02_Comp_eval_visualization(all_best_comps, all_r)
 
+### Evaluation of the prediction performance 
 
-
+Note: The n_components are the best component, as can be found in the figure output by G2C.Step02_Comp_eval_visualization (Figure 1), the cv_repeat is the repeat time of the cross-validation. 
+     median_index, median_score = G2C.Step02_Model_eval(n_components,cv_repeat) 
+     
+     G2C.Step02_Brainsmash(input_file_name, permutation_times) 
+     
+     G2C.Step02_Brainsmash2FG(permutation_times)
+     
+     preds_name, score_name = G2C.Step02_Brainsmash2PLSR(n_components, median_index,permutation_times) 
+     
+     G2C.Step02_Model_eval_visulization(n_components,cv_repeat, median_index, median_score) 
 
 
