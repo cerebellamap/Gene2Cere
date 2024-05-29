@@ -1,4 +1,4 @@
-![image](https://github.com/FanLabCerebellum/Gene2Cere/assets/50706681/7676a0cc-4da8-42bd-b19d-5e611345e210)# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
+# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
@@ -15,6 +15,7 @@ To download the version of the code that is last tested, you can clone this repo
 
 
     git clone https://github.com/FanLabCerebellum/Gene2Cere.git
+    cd script
 
 # Usage
 ## Step1:Set up environment
