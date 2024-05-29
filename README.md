@@ -16,6 +16,10 @@ To download the version of the code that is last tested, you can clone this repo
 
     git clone https://github.com/FanLabCerebellum/Gene2Cere.git
     cd script
+## example
+
+We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
+
 
 # Usage
 ## Step1:Set up environment
