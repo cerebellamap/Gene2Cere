@@ -112,7 +112,7 @@ Prediction using the optimal PLSR model based on all samples. Then, we would get
 
 9. A folder named "BrainSmash" containing data constructed during the BrainSMASH analysis
 
-10.A folder named "GSVA" containing data generated during GSVA, including example GSVA results
+10. A folder named "GSVA" containing data generated during GSVA, including example GSVA results
 
 
 
