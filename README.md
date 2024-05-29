@@ -75,20 +75,20 @@ Note: The n_components are the best component, as can be found in the figure out
      
      G2C.Step02_Model_eval_visulization(n_components,cv_repeat, median_index, median_score) 
 
-# Step4: Definition of GCIsig
+## Step4: Definition of GCIsig
 
 Prediction using the optimal PLSR model based on all samples. Then, we would get the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, so we call it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the 10,000 surrogate maps. The gene set with significant GCI is named GCIsig. 
 
     G2C.Step03_GCIsig(n_components, illustrative, permutation_times)
-# Step5: GSVA link GCIsig to IDPs 
+## Step5: GSVA link GCIsig to IDPs 
 
-## 1. Preparation of the mgt file
+### 1. Preparation of the mgt file
 
     R
 
     source("./Toolbox/GSVA/GSVA_prep.R")
 
-## 2. Run GSVA and visualization
+### 2. Run GSVA and visualization
 
     source("./Script/Step04_GSVA.R", encoding = "UTF-8")
 
