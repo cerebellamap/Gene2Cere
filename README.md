@@ -16,3 +16,29 @@ To download the version of the code that is last tested, you can clone this repo
 `
 git clone https://github.com/FanLabCerebellum/Gene2Cere.git
 `
+# Usage
+## Step1:Set up environment
+
+
+This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions. It is important to note that the amount of disk space required may vary slightly depending on the operating system used due to differences in filesystem architecture.
+
+1.	Anaconda can be downloaded from its official website (https://www.anaconda.com). Follow the installation instructions tailored to your computer's specifications. 
+
+2.	After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below:
+
+`
+conda create --name Gene2Cere python=3.10 R=4.2 pip (10 min)
+`
+
+To set up your dedicated Anaconda environment, follow the step-by-step instructions provided by the prompts during the creation process. This ensures the environment is configured correctly. For comprehensive guidance on how to create, manage, and work with Anaconda environments, you can refer to the official Anaconda documentation (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
+
+3.	Activating the environment using the following command:
+
+`
+conda activate Gene2Cere
+`
+
+4.	Install the Python and R dependency packages necessary to run the scripts.
+
+Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
+
