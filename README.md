@@ -1,4 +1,4 @@
-# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
+![image](https://github.com/FanLabCerebellum/Gene2Cere/assets/50706681/7676a0cc-4da8-42bd-b19d-5e611345e210)# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
@@ -78,5 +78,13 @@ Note: The n_components are the best component, as can be found in the figure out
 Prediction using the optimal PLSR model based on all samples. Then, we would get the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, so we call it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the 10,000 surrogate maps. The gene set with significant GCI is named GCIsig. 
 
     G2C.Step03_GCIsig(n_components, illustrative, permutation_times)
+# GSVA link GCIsig to IDPs 
 
+## Preparation of the mgt file
 
+    source("./Toolbox/GSVA/GSVA_prep.R")
+
+## Run GSVA and visualization
+    R
+
+    source("./Script/Step04_GSVA.R", encoding = "UTF-8")
