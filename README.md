@@ -14,7 +14,7 @@ To download the version of the code that is last tested, you can clone this repo
 
     git clone https://github.com/FanLabCerebellum/Gene2Cere.git
     cd script
-## example
+## Example
 
 We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
 
@@ -28,13 +28,13 @@ This protocol is compatible with Windows and Unix-based systems (Mac OSX and Lin
 
 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below:
 
-     conda create --name Gene2Cere python=3.10 R=4.2 pip (10 min)
+    conda create --name Gene2Cere python=3.10 R=4.2 pip (10 min)
   
 3. To set up your dedicated Anaconda environment, follow the step-by-step instructions provided by the prompts during the creation process. This ensures the environment is configured correctly. For comprehensive guidance on how to create, manage, and work with Anaconda environments, you can refer to the official Anaconda documentation (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
 
 4. Activating the environment using the following command:
 
-     conda activate Gene2Cere
+    conda activate Gene2Cere
    
 6. Install the Python and R dependency packages necessary to run the scripts.
 
