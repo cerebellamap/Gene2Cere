@@ -94,25 +94,25 @@ Prediction using the optimal PLSR model based on all samples. Then, we would get
     source("./Script/Step04_GSVA.R", encoding = "UTF-8")
 
 # Expected outcomes
-1. A csv file (Step01_Gene_expression.csv) containing the gene expression data for all cerebellar samples
+1. A csv file ` (Step01_Gene_expression.csv) `  containing the gene expression data for all cerebellar samples
 
-2. A csv file (Step01_Sample_info.csv) that includes information for all cerebellar samples from AHBA, along with the IDP values for each sample
+2. A csv file ` (Step01_Sample_info.csv)`  that includes information for all cerebellar samples from AHBA, along with the IDP values for each sample
 
-3. An npy file (Step02_Comp_eval_run_100x10cv_all_best_comps.npy) providing information on the optimal component number from the initial 9-fold training of the nested 10-fold cross-validation
+3. An npy file ` (Step02_Comp_eval_run_100x10cv_all_best_comps.npy)`  providing information on the optimal component number from the initial 9-fold training of the nested 10-fold cross-validation
 
-4. An npy file (Step02_Comp_eval_run_100x10cv_all_r.npy) containing the correlation between observed and predicted IDP values for the initial 1-fold testing samples, based on the optimal component number within the initial 9-fold training samples
+4. An npy file ` (Step02_Comp_eval_run_100x10cv_all_r.npy)`  containing the correlation between observed and predicted IDP values for the initial 1-fold testing samples, based on the optimal component number within the initial 9-fold training samples
 
-5. A png file (Step02_Comp_eval_visualization.png) illustrating the optimal component number from the nested 10-fold cross-validation
+5. A png file ` (Step02_Comp_eval_visualization.png)`  illustrating the optimal component number from the nested 10-fold cross-validation
 
-6. A csv file (Step02_PLSR_101x10cv_preds.csv) detailing the predictions from 101 repetitions of 10-fold cross-validation
+6. A csv file ` (Step02_PLSR_101x10cv_preds.csv)`  detailing the predictions from 101 repetitions of 10-fold cross-validation
 
-7. A png file (Step02_PLSR_101x10cv_r2median_20.png) showing the prediction performance
+7. A png file ` (Step02_PLSR_101x10cv_r2median_20.png)`  showing the prediction performance
 
-8. A csv file (Step03_GCIsig.csv) containing the GCI values and their significance after applying BrainSMASH with multiple comparison test
+8. A csv file ` (Step03_GCIsig.csv)`  containing the GCI values and their significance after applying BrainSMASH with multiple comparison test
 
-9. A folder named "BrainSmash" containing data constructed during the BrainSMASH analysis
+9. A folder named ` "BrainSmash"`  containing data constructed during the BrainSMASH analysis
 
-10. A folder named "GSVA" containing data generated during GSVA, including example GSVA results
+10. A folder named`  "GSVA"`  containing data generated during GSVA, including example GSVA results
 
 
 
