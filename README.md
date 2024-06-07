@@ -1,10 +1,10 @@
-# Protocol to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum
+![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/d3e0d963-1126-40d4-bd07-700ddf3f648d)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/66d8d0d9-ccd2-4701-9599-9f194dd57f4e)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/a97d42a1-9cc2-46bf-b5f9-a160304986d4)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/3c49f9ff-d549-4a47-b1be-51634c567605)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/81fb1edf-a4b5-4026-8d3c-da4833b8c801)# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
 
 # Abstract
-Extensive imaging-derived phenotypes (IDPs) of the human cerebellum have been explored but lack evidence from different modalities and scales to explore the spatio-molecular profiles that might be engaged in their formation. Here, we detail procedures from obtaining cerebellar transcriptomic samples from Allen Human Brain Atlas (AHBA), assignment of IDPs into samples, predictions of IDPs using gene expression, significance evaluation of genes, linking the gene to IDPs using gene set variation analysis (GSVA). 
+Imaging transcriptomics offers opportunities to uncover the genetic profiles underlying neuroimaging-derived phenotypes (IDPs) but lacks explanation from gene to IDPs. Here, we present a protocol for combining imaging transcriptomics with gene set variation analysis (GSVA) to detect the spatio-molecular profiles underlying IDPs in the human cerebellum. We describe the steps for data preparation, model training, model evaluation, key gene identification, and GSVA. Our protocol broadens the way to interpret the biological pathways shaping a wide range of neuroimaging-derived cerebellar properties.
 ![](https://github.com/FanLabCerebellum/Gene2Cere/blob/main/abstract.png)  
 
 # Code Release
@@ -25,7 +25,7 @@ We provide an example to show how to uncover the spatio-molecular profiles shape
 # Usage
 ## Step1: Set up environment
 
-This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions. It is important to note that the amount of disk space required may vary slightly depending on the operating system used due to differences in filesystem architecture.
+This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions.
 
 ### 1. Anaconda can be downloaded from its official website (https://www.anaconda.com). Follow the installation instructions tailored to your computer's specifications.
 ### 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below:
@@ -42,8 +42,10 @@ To set up your dedicated Anaconda environment, follow the step-by-step instructi
 Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
   
 ## Step2: Input preparation
-Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs would be generated in the example output file '/home/user/Gene2Cere/Output/' which could be changed directly by providing output_dir=yourpath or changed in the Gene2Cere.py
-Note: For the input, either common neuroimaging scan formats (NIfTI - .nii, .nii.gz) can be used. It represents the voxel-wise IDPs of the human cerebellum. The example input was provided in the “Gene2Cere/Data/Input_example/.” The example path is provided as a relative path (e.g., ‘‘Input_example/Input_example.nii’, and the default father file is data_dir, which could be changed directly by providing data_dir=yourpath or changed in the Gene2Cere.py). 
+Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs will be generated in the example output file located in '/home/user/Gene2Cere/Output/'. This placement can be changed directly by providing output_dir=yourpath or by changing in the Gene2Cere.py script.
+
+Note: For the input, neuroimaging scan formats supported by nibabel (most commonly NIfTI-1 - .nii, .nii.gz) can be used. These files represent the voxel-wise IDPs of the human cerebellum. The example input is provided in the “Gene2Cere/Data/Input_example/.” The example path is provided as a relative path (e.g., ‘‘Input_example/Input_example.nii’, and the default parent location is data_dir, this can be changed directly by providing data_dir=yourpath or by changing the relevant section in Gene2Cere.py). 
+
 
     import sys
 
@@ -64,16 +66,18 @@ Note: The num_repeat is the repeat time during the evaluation.
 
 ### 2. Evaluation of the prediction performance 
 
-Note: The n_components are the best component, as can be found in the figure output by G2C.Step02_Comp_eval_visualization (Figure 1), the cv_repeat is the repeat time of the cross-validation. 
+Note: The n_components is determined as  the optimal number of components to use accoring to figure produced by G2C.Step02_Comp_eval_visualization (Figure 1), here the cv_repeat is the number of repeats of the cross-validation procedure.
+
      median_index, median_score = G2C.Step02_Model_eval(n_components,cv_repeat) 
-     
-     G2C.Step02_Brainsmash(input_file_name, permutation_times) 
-     
-     G2C.Step02_Brainsmash2FG(permutation_times)
-     
-     preds_name, score_name = G2C.Step02_Brainsmash2PLSR(n_components, median_index,permutation_times) 
-     
-     G2C.Step02_Model_eval_visulization(n_components,cv_repeat, median_index, median_score) 
+
+     G2C.Step02_Brainsmash(input_file_name, n_permutations)
+
+     G2C.Step02_Brainsmash2FG(n_permutations)
+
+     preds_name, score_name = G2C.Step02_Brainsmash2PLSR(n_components, median_index,n_permutations)
+
+     G2C.Step02_Model_eval_visulization(n_components,cv_repeat, median_index, median_score)
+
 
 ## Step4: Definition of GCIsig
 
