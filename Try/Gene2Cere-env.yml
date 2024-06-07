@@ -1,0 +1,31 @@
+name: Gene2cere
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy=1.26.3
+  - pandas=2.1.4
+  - scipy=1.11.4
+  - matplotlib=3.8.2
+  - nibabel=5.2.0
+  - sklearn=1.3.2
+  - joblib=1.3.2
+  - seaborn=0.12.2
+  - tqdm=4.66.4
+  - PIL=10.2.0
+  - nibabel=5.2.0
+  - r=4.2
+  - brainsmash=0.11.0
+  - r-ggpubr=0.6.0
+  - r-stringr=1.5.1
+  - r-msigdbr=7.5.1
+  - r-ggrepel=0.9.5
+  - r-ggplot2=3.5.1
+  - r-dplyr=1.1.4
+  - r-rcolorbrewer=1.1.3
+  - r-ggnewscale=0.4.10
+  - r-cowplot=1.1.3
+  - r-patchwork=1.2.0
+  - r-cluster=2.1.6
+prefix: /n01dat01/kkwang/softwares/anaconda-3/envs/Gene2Cere
