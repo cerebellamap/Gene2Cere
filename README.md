@@ -119,9 +119,9 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
 10. A folder named ` "GSVA" `  containing data generated during GSVA, including example GSVA results similar to Figure 3
 
-# Bugs and Questions
+# Reminder
 
-Due to large file limit in Github, the microarray directory is saved in Baidu Netdisk. 
+Due to large file limit in Github, the microarray folder is not uploaded. You can contact us and put it in /STARProtocols/Try/Data/AHBA_data/
 
 # Bugs and Questions
 
