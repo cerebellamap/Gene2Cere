@@ -121,6 +121,10 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
 # Bugs and Questions
 
+Due to large file limit in Github, the microarray directory is saved in Baidu Netdisk. 
+
+# Bugs and Questions
+
 Please contact Yaping Wang at wangyaping19@mails.ucas.ac.cn and Kaikai Wang at kaikwang77@gmail.com
 
 
