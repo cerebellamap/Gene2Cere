@@ -1,4 +1,4 @@
-![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/82986d5c-1213-4267-9463-c4b0d467d957)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/34ecc195-be25-4f52-99c3-f85c0f53a921)# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
+# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
