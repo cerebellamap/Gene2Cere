@@ -1,4 +1,4 @@
-![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/d3e0d963-1126-40d4-bd07-700ddf3f648d)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/66d8d0d9-ccd2-4701-9599-9f194dd57f4e)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/a97d42a1-9cc2-46bf-b5f9-a160304986d4)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/3c49f9ff-d549-4a47-b1be-51634c567605)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/81fb1edf-a4b5-4026-8d3c-da4833b8c801)# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
+![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/82986d5c-1213-4267-9463-c4b0d467d957)![image](https://github.com/cerebellamap/STARProtocols/assets/50706681/34ecc195-be25-4f52-99c3-f85c0f53a921)# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
@@ -81,9 +81,10 @@ Note: The n_components is determined as  the optimal number of components to use
 
 ## Step4: Definition of GCIsig
 
-Prediction using the optimal PLSR model based on all samples. Then, we would get the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, so we call it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the 10,000 surrogate maps. The gene set with significant GCI is named GCIsig. 
+In this step the prediction is performed using the optimal PLSR model based on all samples. This, will estimate  the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, hence we denote it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using 10,000 surrogate maps produced utilizing a spatial correlation preserving permutation procedure 3. The set of genes which exhibits significant GCI is named GCIsig.
 
-    G2C.Step03_GCIsig(n_components, illustrative, permutation_times)
+    G2C.Step03_GCIsig(n_components, illustrative, n_permutations)
+
 ## Step5: GSVA link GCIsig to IDPs 
 
 ### 1. Preparation of the mgt file
@@ -105,21 +106,22 @@ Prediction using the optimal PLSR model based on all samples. Then, we would get
 
 4. An npy file ` (Step02_Comp_eval_run_100x10cv_all_r.npy) `  containing the correlation between observed and predicted IDP values for the initial 1-fold testing samples, based on the optimal component number within the initial 9-fold training samples
 
-5. A png file ` (Step02_Comp_eval_visualization.png) `  illustrating the optimal component number from the nested 10-fold cross-validation
+5. A png file ` (Step02_Comp_eval_visualization.png) `   illustrating the optimal number of components based on the nested 10-fold cross-validation, similar to Figure 1
 
 6. A csv file ` (Step02_PLSR_101x10cv_preds.csv) `  detailing the predictions from 101 repetitions of 10-fold cross-validation
 
-7. A png file ` (Step02_PLSR_101x10cv_r2median_20.png) `  showing the prediction performance
+7. A png file ` (Step02_PLSR_101x10cv_r2median_20.png) `  showing the prediction performance, similar to Figure 2
 
-8. A csv file ` (Step03_GCIsig.csv) `  containing the GCI values and their significance after applying BrainSMASH with multiple comparison test
+
+8. A csv file ` (Step03_GCIsig.csv) `  containing the GCI values and their significance after applying the BrainSMASH permutation procedure including correction for multiple comparisons
 
 9. A folder named ` "BrainSmash" `  containing data constructed during the BrainSMASH analysis
 
-10. A folder named ` "GSVA" `  containing data generated during GSVA, including example GSVA results
+10. A folder named ` "GSVA" `  containing data generated during GSVA, including example GSVA results similar to Figure 3
 
 # Bugs and Questions
 
-Please contact Kaikai Wang at kaikwang77@gmail.com  and Yaping Wang at wangyaping19@mails.ucas.ac.cn
+Please contact Yaping Wang at wangyaping19@mails.ucas.ac.cn and Kaikai Wang at kaikwang77@gmail.com
 
 
 
