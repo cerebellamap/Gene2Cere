@@ -122,7 +122,7 @@ In this step the prediction is performed using the optimal PLSR model based on a
 # Reminder
 
 Due to large file limit in Github, the microarray folder is not uploaded. Data from the Allen Human Brain Atlas can be downloaded according to /STARProtocols/Try/Data/AHBA_data/microarray/AHBA_readme.txt and put them in microarray folder,for example
-
+![](https://github.com/cerebellamap/STARProtocols/blob/main/microarray.jpg)
 
 # Bugs and Questions
 
