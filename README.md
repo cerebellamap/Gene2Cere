@@ -121,7 +121,7 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
 # Bugs and Questions
 
-Please contact Yaping Wang at wangyaping19@mails.ucas.ac.cn and Kaikai Wang at kaikwang77@gmail.com
+Please contact Yaping Wang at wangyaping19@mails.ucas.ac.cn and Kaikai Wang at kkwang07@126.com
 
 
 
