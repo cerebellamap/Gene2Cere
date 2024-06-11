@@ -119,11 +119,6 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
 10. A folder named ` "GSVA" `  containing data generated during GSVA, including example GSVA results similar to Figure 3
 
-# Reminder
-
-Due to large file limit in Github, the microarray folder is not uploaded. Data from the Allen Human Brain Atlas can be downloaded according to /STARProtocols/Try/Data/AHBA_data/microarray/AHBA_readme.txt and put them in microarray folder,for example
-![](https://github.com/cerebellamap/STARProtocols/blob/main/microarray.jpg)
-
 # Bugs and Questions
 
 Please contact Yaping Wang at wangyaping19@mails.ucas.ac.cn and Kaikai Wang at kaikwang77@gmail.com
