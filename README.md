@@ -12,7 +12,7 @@ Imaging transcriptomics offers opportunities to uncover the genetic profiles und
 To download the version of the code that is last tested, you can clone this repository:
 
 
-    git clone https://github.com/FanLabCerebellum/Gene2Cere.git
+    git clone https://github.com/cerebellamap/STARProtocols.git
     cd STARProtocols/Try/script
 ## Example
 
