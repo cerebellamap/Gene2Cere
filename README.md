@@ -54,7 +54,7 @@ Note: For the input, neuroimaging scan formats supported by nibabel (most common
 
     import Gene2Cere.Gene2Cere as G2C
 
-    G2C.Step01_Input(input_file_name='Input_example/Input_example.nii')
+    G2C.Step01_Input(input_file_name='/Gene2Cere/Data/Input_example/Input_example.nii')
 
 ## Step3: PLSR prediction the imaging features using gene expression
 
@@ -92,11 +92,11 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
     R
 
-    source("./Toolbox/GSVA/GSVA_prep.R")
+    source("/Gene2Cere/Toolbox/GSVA/GSVA_prep.R")
 
 ### 2. Run GSVA and visualization
 
-    source("./Script/Step04_GSVA.R", encoding = "UTF-8")
+    source("/Gene2Cere/Script/Step04_GSVA.R", encoding = "UTF-8")
 
 # Expected outcomes
 1. A csv file ` (Step01_Gene_expression.csv) `  containing the gene expression data for all cerebellar samples
