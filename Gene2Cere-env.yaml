@@ -164,7 +164,7 @@ dependencies:
   - pygments=2.18.0
   - python=3.10.14
   - python-dateutil=2.9.0
-  - python_abi=3.10=4_cp310
+  - python_abi=3.10
   - r-abind=1.4_5
   - r-arrow=16.1.0
   - r-askpass=1.2.0
