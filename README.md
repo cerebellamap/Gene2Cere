@@ -30,13 +30,13 @@ This protocol is compatible with Windows and Unix-based systems (Mac OSX and Lin
 ### 1. Anaconda can be downloaded from its official website (https://www.anaconda.com). Follow the installation instructions tailored to your computer's specifications.
 ### 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below:
 
-    conda create --name Gene2Cere python=3.10 R=4.2 pip (10 min)
+    conda env create -f Gene2Cere-env.yaml
 
 To set up your dedicated Anaconda environment, follow the step-by-step instructions provided by the prompts during the creation process. This ensures the environment is configured correctly. For comprehensive guidance on how to create, manage, and work with Anaconda environments, you can refer to the official Anaconda documentation (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
 
 ### 3. Activating the environment using the following command
 
-    conda activate Gene2Cere
+    conda activate Cere2
     
 ### 4. Install the Python and R dependency packages necessary to run the scripts.
 Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
