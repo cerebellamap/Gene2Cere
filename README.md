@@ -40,7 +40,7 @@ To set up your dedicated Anaconda environment, follow the step-by-step instructi
     conda activate Gene2Cere
     
 ### 4. Install the Python and R dependency packages necessary to run the scripts.
-Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
+Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ and requirements_r.yaml in the repository with the minimum environment to run the scripts.
   
 ## Step2: Input preparation
 Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs will be generated in the example output file located in '/home/user/Gene2Cere/Output/'. This placement can be changed directly by providing output_dir=yourpath or by changing in the Gene2Cere.py script.
