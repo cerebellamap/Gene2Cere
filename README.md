@@ -18,7 +18,7 @@ To download the version of the code that is last tested, you can clone this repo
 
 We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
 
-`Gene2Cerescript/Step01_Prediction.ipynb`
+`Gene2Cere/script/Step01_Prediction.ipynb`
 
 `Gene2Cere/script/Step04_GSVA.R`
     
