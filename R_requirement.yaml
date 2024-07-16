@@ -1,0 +1,22 @@
+
+dependencies:
+  - ggpubr=4.3.0
+  - stringr=4.3.2
+  - GSVA=4.3.3
+  - GSEABase =4.3.3
+  - ComplexHeatmap=4.3.3
+  - limma=4.3.3
+  - msigdbr=4.3.0
+  - ggrepel=4.3.2
+  - ggplot2=4.3.3
+  - dplyr=4.3.2
+  - RColorBrewer=4.3.3
+  - ggnewscale=4.3.2
+  - cowplot=4.3.2
+  - patchwork=4.3.2
+  - cluster=4.3.2
+  - BiocParallel=4.3.3
+  - biomaRt=4.3.3
+  - httr=4.3.3
+  - devtools=4.3.0
+  
