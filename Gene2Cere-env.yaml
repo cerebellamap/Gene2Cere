@@ -45,8 +45,8 @@ dependencies:
   - font-ttf-source-code-pro=2.038
   - font-ttf-ubuntu=0.83
   - fontconfig=2.14.2
-  - fonts-conda-ecosystem=1=0
-  - fonts-conda-forge=1=0
+  - fonts-conda-ecosystem=1
+  - fonts-conda-forge=1
   - freetype=2.12.1
   - fribidi=1.0.10
   - gcc_impl_linux-64=14.1.0
