@@ -12,15 +12,15 @@ Imaging transcriptomics offers opportunities to uncover the genetic profiles und
 To download the version of the code that is last tested, you can clone this repository:
 
 
-    git clone https://github.com/cerebellamap/STARProtocols.git
-    cd STARProtocols/Try/script
+    git clone https://github.com/cerebellamap/Gene2Cere.git
+    cd Gene2Cere/script
 ## Example
 
 We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
 
-`STARProtocols/Try/script/Step01_Prediction.ipynb`
+`Gene2Cere/script/Step01_Prediction.ipynb`
 
-`STARProtocols/Try/script/Step04_GSVA.R`
+`Gene2Cere/script/Step04_GSVA.R`
     
 # Usage
 ## Step1: Set up environment
@@ -28,9 +28,10 @@ We provide an example to show how to uncover the spatio-molecular profiles shape
 This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions.
 
 ### 1. Anaconda can be downloaded from its official website (https://www.anaconda.com). Follow the installation instructions tailored to your computer's specifications.
-### 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below:
+### 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below.Note: Main dependency packages are listed in the key resources table. We have also provided a YAML file named ‘‘Gene2Cere-env.yaml’’  with the minimum environment to run the scripts, which could be downloaded from https://github.com/cerebellamap/Gene2Cere.
 
-    conda create --name Gene2Cere python=3.10 R=4.2 pip (10 min)
+
+    conda env create -n Gene2Cere -f Gene2Cere-env.yaml
 
 To set up your dedicated Anaconda environment, follow the step-by-step instructions provided by the prompts during the creation process. This ensures the environment is configured correctly. For comprehensive guidance on how to create, manage, and work with Anaconda environments, you can refer to the official Anaconda documentation (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
 
@@ -39,7 +40,7 @@ To set up your dedicated Anaconda environment, follow the step-by-step instructi
     conda activate Gene2Cere
     
 ### 4. Install the Python and R dependency packages necessary to run the scripts.
-Note: All Python dependency packages are listed in the key resources table. We have also provided a YML file named ‘‘Gene2Cere-env.yml’’ in the repository with the minimum environment to run the scripts.
+Note: All Python dependency packages are listed in the key resources table. We have also provided two YAML file named ‘‘Gene2Cere-env.yaml’’ and requirements_r.yaml in the repository with the minimum environment to run the scripts.
   
 ## Step2: Input preparation
 Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs will be generated in the example output file located in '/home/user/Gene2Cere/Output/'. This placement can be changed directly by providing output_dir=yourpath or by changing in the Gene2Cere.py script.
@@ -49,11 +50,11 @@ Note: For the input, neuroimaging scan formats supported by nibabel (most common
 
     import sys
 
-    sys.path.append('/home/user/Gene2Cere/Toolbox/')
+    sys.path.append('/Gene2Cere/Toolbox/')
 
     import Gene2Cere.Gene2Cere as G2C
 
-    G2C.Step01_Input(input_file_name='Input_example/Input_example.nii')
+    G2C.Step01_Input(input_file_name='/Gene2Cere/Data/Input_example/Input_example.nii')
 
 ## Step3: PLSR prediction the imaging features using gene expression
 
@@ -91,11 +92,11 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
     R
 
-    source("./Toolbox/GSVA/GSVA_prep.R")
+    source("/Gene2Cere/Toolbox/GSVA/GSVA_prep.R")
 
 ### 2. Run GSVA and visualization
 
-    source("./Script/Step04_GSVA.R", encoding = "UTF-8")
+    source("/Gene2Cere/Script/Step04_GSVA.R", encoding = "UTF-8")
 
 # Expected outcomes
 1. A csv file ` (Step01_Gene_expression.csv) `  containing the gene expression data for all cerebellar samples
