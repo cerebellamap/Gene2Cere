@@ -12,15 +12,15 @@ Imaging transcriptomics offers opportunities to uncover the genetic profiles und
 To download the version of the code that is last tested, you can clone this repository:
 
 
-    git clone https://github.com/cerebellamap/STARProtocols.git
-    cd STARProtocols/Try/script
+    git clone https://github.com/cerebellamap/Gene2Cere.git
+    cd Gene2Cere/script
 ## Example
 
 We provide an example to show how to uncover the spatio-molecular profiles shape the imaging-derived property of the human cerebellum:
 
-`STARProtocols/Try/script/Step01_Prediction.ipynb`
+`Gene2Cerescript/Step01_Prediction.ipynb`
 
-`STARProtocols/Try/script/Step04_GSVA.R`
+`Gene2Cere/script/Step04_GSVA.R`
     
 # Usage
 ## Step1: Set up environment
@@ -49,7 +49,7 @@ Note: For the input, neuroimaging scan formats supported by nibabel (most common
 
     import sys
 
-    sys.path.append('/home/user/Gene2Cere/Toolbox/')
+    sys.path.append('/Gene2Cere/Toolbox/')
 
     import Gene2Cere.Gene2Cere as G2C
 
