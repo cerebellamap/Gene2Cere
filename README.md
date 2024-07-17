@@ -40,7 +40,7 @@ To set up your dedicated Anaconda environment, follow the step-by-step instructi
     conda activate Gene2Cere
     
 ### 4. Install the Python and R dependency packages necessary to run the scripts.
-Note: All Python dependency packages are listed in the key resources table. We have also provided two YAML files named ‘Gene2Cere-env.yaml’ and ‘requirements_r.yaml‘ in the repository with the minimum environment to run the scripts.
+Note: All Python dependency packages are listed in the key resources table. We have also provided two YAML files named ` Gene2Cere-env.yaml ` and ` requirements_r.yaml ` in the repository with the minimum environment to run the scripts.
 Note that for the installation of some R packages refer to requirements_r.yaml, which contains the r packages that need to be installed, and then install them using the   ` BiocManager::install("xxx ") ` command. If an error occurs, refer to the protocols Troubleshooting section.
   
 ## Step2: Input preparation
