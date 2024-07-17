@@ -1,12 +1,6 @@
 name: Gene2
 channels:
   - conda-forge
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
   - defaults
 dependencies:
   - _libgcc_mutex=0.1
@@ -51,8 +45,8 @@ dependencies:
   - font-ttf-source-code-pro=2.038
   - font-ttf-ubuntu=0.83
   - fontconfig=2.14.2
-  - fonts-conda-ecosystem=1=0
-  - fonts-conda-forge=1=0
+  - fonts-conda-ecosystem=1
+  - fonts-conda-forge=1
   - freetype=2.12.1
   - fribidi=1.0.10
   - gcc_impl_linux-64=14.1.0
@@ -170,7 +164,7 @@ dependencies:
   - pygments=2.18.0
   - python=3.10.14
   - python-dateutil=2.9.0
-  - python_abi=3.10=4_cp310
+  - python_abi=3.10
   - r-abind=1.4_5
   - r-arrow=16.1.0
   - r-askpass=1.2.0
@@ -445,4 +439,3 @@ dependencies:
     - tornado==6.4.1
     - tqdm==4.66.4
     - tzdata==2024.1
-prefix: /n01dat01/kkwang/softwares/anaconda-3/envs/Gene2
