@@ -19,7 +19,7 @@ start = time.time()
 import multiprocessing
 import subprocess 
 import sys
-sys.path.append('/n02dat01/users/ypwang/Gradient/STARProtocol/Try/Toolbox/')
+sys.path.append('./Toolbox/')
 from abagen_cere import allen
 from abagen_cere import datasets
 
@@ -63,13 +63,13 @@ def RGB_to_Hex(rgb):
     return color
 
 
-image_path = "/n02dat01/users/ypwang/Gradient/STARProtocol/Try/Data/colorbar/Hex_1.jpg"
+image_path = "./Data/colorbar/Hex_1.jpg"
 color_1 = get_dominant_colors(image_path)
 # print(color_1)
 color_rgb = [str(x).replace('(','').replace(')','')  for x in color_1]
 Hex_1 = [RGB_to_Hex(x) for x in color_rgb]
 
-image_path = "/n02dat01/users/ypwang/Gradient/STARProtocol/Try/Data/colorbar/Hex_2.jpg"
+image_path = "./Data/colorbar/Hex_2.jpg"
 color_2 = get_dominant_colors(image_path)
 # print(color_2)
 color_rgb = [str(x).replace('(','').replace(')','')  for x in color_2]
@@ -85,19 +85,18 @@ RdBu_9 = cm.get_cmap('RdBu', 9)(np.arange(9))
 # settings.py
 class Settings:
     def __init__(self, data_dir=None, output_dir=None):
-        self.data_dir = data_dir or '/n02dat01/users/ypwang/Gradient/STARProtocol/Try/Data/'
-        self.output_dir = output_dir or '/n02dat01/users/ypwang/Gradient/STARProtocol/Try/Output/'
+        self.data_dir = data_dir or './Data/'
+        self.output_dir = output_dir or './Output/'
 # Initialize settings
 global_settings = Settings()
 
 
-def Step01_Input(input_file_name, data_dir=None, output_dir=None):
+def Step01_Input(input_file, data_dir=None, output_dir=None):
     # Directories
     if data_dir is None:
         data_dir = global_settings.data_dir
     if output_dir is None:
         output_dir = global_settings.output_dir
-    input_file = os.path.join(data_dir, input_file_name)    
     ahba_dir = f'{data_dir}AHBA_data/'  
     # Check for the existence of the microarray folder and fetch data if not present
     if not os.path.exists(os.path.join(ahba_dir, 'microarray')):
@@ -303,7 +302,7 @@ def Step02_Model_eval(n_components,cv_repeat, data_dir=None, output_dir=None):
     print(f'median_index: {median_index}, median_score: {median_score[0]}')
     return median_index, median_score[0]
 
-def Step02_Model_eval_visulization(n_components,cv_repeat,median_index,median_score, data_dir=None, output_dir=None):
+def Step02_Model_eval_visualization(n_components,cv_repeat,median_index,median_score, data_dir=None, output_dir=None):
     if data_dir is None:
         data_dir = global_settings.data_dir
     if output_dir is None:
@@ -364,7 +363,16 @@ def Step02_Model_eval_visulization(n_components,cv_repeat,median_index,median_sc
     plt.xlabel('Actual IDP', fontsize=25)
     plt.ylabel('Predicted IDP', fontsize=25)
     r = np.float16(stats.pearsonr(preds_rep.iloc[:,median_index], report['Y'])[0])
-    plt.text(0.05, 0.92,'$r=%s, p_{sa}<0.01$'%(float('%.2g' % r)), fontsize=30)
+    f = f'{output_dir}BrainSmash/Step02_BrainSmash2PLSR_model{median_index}_preds.csv'
+    csv_cur = pd.read_csv(f, index_col=0)
+    Final_perm_cur = pd.Series([stats.pearsonr(report['Y'], csv_cur.iloc[:, x])[0] for x in range(len(csv_cur.T))])
+
+    psa = (Final_perm_cur > median_score).sum() / Final_perm_cur.count()
+    if psa < 0.01:
+        plt.text(0.05, 0.92, '$r=%s, p_{sa}<0.01$' % (float('%.2g' % r)), fontsize=30)
+    else:
+        plt.text(0.05, 0.92, '$r=%s, p_{sa}=%s$' % (float('%.2g' % r), f'{psa:.2g}'), fontsize=30)
+
     ax = plt.gca()
     ax.spines['bottom'].set_linewidth(2)
     ax.spines['left'].set_linewidth(2)
@@ -408,7 +416,7 @@ def perform_CV(i, expression, report, clf, cv_strategy, cv_repeat):
     return preds
 
 
-def Step02_Brainsmash(input_file_name, n_permutations, data_dir=None, output_dir=None):
+def Step02_Brainsmash(input_file, n_permutations, data_dir=None, output_dir=None):
     if data_dir is None:
         data_dir = global_settings.data_dir
     if output_dir is None:
@@ -424,7 +432,7 @@ def Step02_Brainsmash(input_file_name, n_permutations, data_dir=None, output_dir
                     cere_coords[1][x],
                     cere_coords[2][x]) for x in range(len(cere_coords[0]))]
     sample_coordinate = cere_coords
-    Cere_atlas = nib.load(f'{data_dir}{input_file_name}')
+    Cere_atlas = nib.load(input_file)
     sample_brainmap  = Cere_atlas.get_fdata()[template_atlas.get_fdata() != 0]
 
     # calculate distance matrix
@@ -445,7 +453,7 @@ def Step02_Brainsmash(input_file_name, n_permutations, data_dir=None, output_dir
     surrogate_maps = gen(n = n_permutations)
     pd.DataFrame(surrogate_maps).to_csv(os.path.join(output_dir,f'Step02_BrainSmash_resample_{n_permutations}.csv'))
 
-def Step02_Brainsmash2FG(n_permutations, data_dir=None, output_dir=None):
+def Step02_Brainsmash2IDP(n_permutations, data_dir=None, output_dir=None):
     if data_dir is None:
         data_dir = global_settings.data_dir
     if output_dir is None:
@@ -475,7 +483,7 @@ def Step02_Brainsmash2FG(n_permutations, data_dir=None, output_dir=None):
     cores = multiprocessing.cpu_count()
     pool = multiprocessing.Pool(processes=cores)
     tasks = [[x] for x in sorted(glob(nifti_name))]
-    y_gradient_list = pool.starmap(GetFG, tasks)
+    y_gradient_list = pool.starmap(GetIDP, tasks)
     y_gradient = pd.concat([pd.DataFrame(y_gradient_list[x]) for x in range(len(y_gradient_list))], axis=1)
     filename = f'{output_dir}BrainSmash/BrainSmash_Rad4mm_sample317_from17853_resample_{y_gradient.shape[1]}.csv'
     pd.DataFrame(y_gradient).to_csv(filename) 
@@ -489,17 +497,17 @@ def Step02_Brainsmash2PLSR(n_components, median_index, n_permutations, data_dir=
     expression = pd.read_csv(os.path.join(output_dir, 'Step01_Gene_expression.csv'), index_col=0)
     report = pd.read_csv(os.path.join(output_dir, 'Step01_Sample_info.csv'), index_col=0)
     report.index = expression.index
-    FG_Perm = pd.read_csv(f'{output_dir}BrainSmash/BrainSmash_Rad4mm_sample317_from17853_resample_{n_permutations}.csv', index_col=0)
-    FG_Perm.index = report.index
-    FG_Perm = FG_Perm.dropna(axis = 1, how = 'any').iloc[:, 0:10000]
-    # FG_Perm_cur = FG_Perm.iloc[:, (PTime_each-1000):PTime_each]
+    IDP_Perm = pd.read_csv(f'{output_dir}BrainSmash/BrainSmash_Rad4mm_sample317_from17853_resample_{n_permutations}.csv', index_col=0)
+    IDP_Perm.index = report.index
+    IDP_Perm = IDP_Perm.dropna(axis = 1, how = 'any').iloc[:, 0:10000]
+    # IDP_Perm_cur = IDP_Perm.iloc[:, (PTime_each-1000):PTime_each]
 
     clf = PLSRegression(n_components)
     cv = 10 # 10 folds
     n_jobs = -1  # 使用所有可用的 CPU 核心
     results = Parallel(n_jobs=n_jobs)(
-        delayed(Brainsmash_2PLSR)(perm, FG_Perm, expression, report, n_components, cv, clf, median_index)
-        for perm in range(len(FG_Perm.T))
+        delayed(Brainsmash_2PLSR)(perm, IDP_Perm, expression, report, n_components, cv, clf, median_index)
+        for perm in range(len(IDP_Perm.T))
     )
     preds = pd.concat([res[0] for res in results], axis=1)
     score = pd.DataFrame([res[1] for res in results]).T
@@ -511,9 +519,9 @@ def Step02_Brainsmash2PLSR(n_components, median_index, n_permutations, data_dir=
     score.to_csv(score_name)
     return preds_name, score_name
 
-def Brainsmash_2PLSR(perm, FG_Perm, expression, report, n_components, cv, clf, median_index):
-    print(f'repeat: {perm}/{len(FG_Perm.T)}')
-    y = FG_Perm.iloc[:, perm]
+def Brainsmash_2PLSR(perm, IDP_Perm, expression, report, n_components, cv, clf, median_index):
+    print(f'repeat: {perm}/{len(IDP_Perm.T)}')
+    y = IDP_Perm.iloc[:, perm]
     preds_cur = pd.DataFrame(np.zeros((len(y), 1)), index=expression.index)
     r_cur_shuffleY = []
     r_cur_originalY = []
@@ -557,7 +565,7 @@ def Grid2world(GridList, affine):
     MNI_coord = MNI_coord.round(2)
     return MNI_coord[:, :3]
 
-def GetFG(sheet, data_dir=None, output_dir=None):
+def GetIDP(sheet, data_dir=None, output_dir=None):
     if data_dir is None:
         data_dir = global_settings.data_dir
     if output_dir is None:
@@ -657,15 +665,15 @@ def Step03_GCIsig(n_components, illustrative, n_permutations, data_dir=None, out
     # gene_table.to_csv(os.path.join(output_dir,'Step03_GCI_BETA.csv'))
 
 
-    FG_Perm = pd.read_csv(f'{output_dir}BrainSmash/BrainSmash_Rad4mm_sample317_from17853_resample_{n_permutations}.csv', index_col=0)
-    FG_Perm.index = report.index
-    FG_Perm = FG_Perm.dropna(axis = 1, how = 'any').iloc[:, 0:10000]
+    IDP_Perm = pd.read_csv(f'{output_dir}BrainSmash/BrainSmash_Rad4mm_sample317_from17853_resample_{n_permutations}.csv', index_col=0)
+    IDP_Perm.index = report.index
+    IDP_Perm = IDP_Perm.dropna(axis = 1, how = 'any').iloc[:, 0:10000]
     clf = PLSRegression(n_components)
 
     n_jobs = -1  # Use all available CPU cores
     results = Parallel(n_jobs=n_jobs)(
-        delayed(GCIsig)(perm, FG_Perm, expression, report, n_components,clf)
-        for perm in range(len(FG_Perm.T))
+        delayed(GCIsig)(perm, IDP_Perm, expression, report, n_components,clf)
+        for perm in range(len(IDP_Perm.T))
     )
     
     score = pd.DataFrame([res[0] for res in results]).T
@@ -709,9 +717,9 @@ def Step03_GCIsig(n_components, illustrative, n_permutations, data_dir=None, out
     gene_table.to_csv(gene_table_file)
     # return gene_table_file
 
-def GCIsig(perm, FG_Perm, expression, report, n_components, clf):
-    print(f'repeat: {perm}/{len(FG_Perm.T)}')
-    y = FG_Perm.iloc[:, perm]
+def GCIsig(perm, IDP_Perm, expression, report, n_components, clf):
+    print(f'repeat: {perm}/{len(IDP_Perm.T)}')
+    y = IDP_Perm.iloc[:, perm]
     
     mod = clf.fit(expression, y)
     score = abs(stats.pearsonr(mod.predict(expression).flatten(), y)[0])
