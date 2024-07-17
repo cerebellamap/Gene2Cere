@@ -1,4 +1,4 @@
-name: Gene2
+name: Gene2Cere
 channels:
   - conda-forge
   - defaults
