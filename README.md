@@ -58,8 +58,8 @@ Note: All Python dependency packages are listed in the key resources table. We h
     import Gene2Cere.Gene2Cere as G2C
 
 ### 2.Then, input the file containing the cerebellar IDP that the user wants to explore 
-An example is provided in the Gene2Cere/Data/Input_example. Select the path of your input IDP file to obtain the genetic sample information matrix with IDP values and sample-wise gene expression matrix, which will be generated in the example output file located in '/home/user/Gene2Cere/Output/'. This placement can be changed directly by providing output_dir=yourpath.
-Note: For the input_file, neuroimaging scan formats supported by nibabel (most commonly NIfTI-1 - .nii, .nii.gz) can be used. These files represent the voxel-wise IDP of the human cerebellum. The example path is provided as a relative path (e.g., ‘‘./Data/Input_example/Input_example.nii”, and the default parent location is /home/user/Gene2Cere, this can be changed directly by providing data_dir=yourabsolutepath). 
+An example is provided in ` the Gene2Cere/Data/Input_example `. Select the path of your input IDP file to obtain the genetic sample information matrix with IDP values and sample-wise gene expression matrix, which will be generated in the example output file located in ` /home/user/Gene2Cere/Output/ `. This placement can be changed directly by providing `output_dir=yourpath`.
+Note: For ` the input_file `, neuroimaging scan formats supported by nibabel (most commonly NIfTI-1 - .nii, .nii.gz) can be used. These files represent the voxel-wise IDP of the human cerebellum. The example path is provided as a relative path (e.g., `./Data/Input_example/Input_example.nii`, and the default parent location is /home/user/Gene2Cere, this can be changed directly by providing data_dir=yourabsolutepath). 
 Note: The first time you run this code, it will download the entire AHBA dataset (about 4GB), which can take a long time (around 20 min), depending on your internet connection speed! But no need later.
 
     data_dir = './Data/'
