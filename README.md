@@ -109,7 +109,7 @@ To filter out the genes that significantly contributed to the IDP rather than be
 
 ## Step5: GSVA link GCIsig to IDP
 ### 1. Preparation of the mgt file
-Note: This step involves downloading bioinformatics datasets via the Internet, including gene ontology (GO) 7,8, Kyoto Encyclopedia of Genes and Genomes (KEGG) 9, and cerebellar cell types data from DropViz 10. These datasets were later used to group GCIsig into gene sets based on biological functions. 
+Note: This step involves downloading bioinformatics datasets via the Internet, including gene ontology (GO), Kyoto Encyclopedia of Genes and Genomes (KEGG), and cerebellar cell types data from DropViz. These datasets were later used to group GCIsig into gene sets based on biological functions. 
 
     R
 
