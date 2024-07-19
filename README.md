@@ -1,10 +1,10 @@
-# Protocol to detect the spatio-molecular profiles underlying the neuroimaging features in the human cerebellum
 
 # References
 Wang Y, Wang Y, Wang H, et al. Spatio-molecular profiles shape the human cerebellar hierarchy along the sensorimotor-association axis. Cell Rep. 2024;43(2):113770. doi:10.1016/j.celrep.2024.113770
 
 # Abstract
 Imaging transcriptomics offers opportunities to uncover the genetic profiles underlying neuroimaging-derived phenotypes (IDPs) but lacks explanation from gene to IDPs. Here, we present a protocol for combining imaging transcriptomics with gene set variation analysis (GSVA) to detect the spatio-molecular profiles underlying IDPs in the human cerebellum. We describe the steps for data preparation, model training, model evaluation, key gene identification, and GSVA. Our protocol broadens the way to interpret the biological pathways shaping a wide range of neuroimaging-derived cerebellar properties.
+
 ![](https://github.com/FanLabCerebellum/Gene2Cere/blob/main/abstract.png)  
 
 # Code Release
@@ -27,11 +27,11 @@ We provide an example to show how to uncover the spatio-molecular profiles shape
 
 This protocol is compatible with Windows and Unix-based systems (Mac OSX and Linux) and requires Python version 3.10 and R version 4.2 or higher. Running this protocol in a separate Anaconda environment is advisable for optimal performance and to prevent potential conflicts with other scripts or libraries. Establishing a dedicated environment minimizes the risk of inadvertently causing conflicts with other installed software or different Python or R versions.
 
+
 ### 1. Anaconda can be downloaded from its official website (https://www.anaconda.com). Follow the installation instructions tailored to your computer's specifications.
-### 2. After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10) and R (version 4.2) by executing the command provided below.Note: Main dependency packages are listed in the key resources table. We have also provided a YAML file named ‘‘Gene2Cere-env.yaml’’  with the minimum environment to run the scripts, which could be downloaded from https://github.com/cerebellamap/Gene2Cere.
+### 2. 2.	After installing Anaconda, restart any open terminals. Then, create a dedicated environment that includes Python (version 3.10), R (version 4.2), and dependency packages necessary to run the scripts by executing the command provided below: Note: Main dependency packages are listed in the key resources table. We have also provided a YAML file named ‘‘Gene2Cere-env.yaml’’ with the minimum environment to run the scripts, which can be downloaded from https://github.com/cerebellamap/Gene2Cere.
 
-
-    conda env create -n Gene2Cere -f Gene2Cere-env.yaml
+    conda create -n Gene2Cere -f Gene2Cere-env.yaml
 
 To set up your dedicated Anaconda environment, follow the step-by-step instructions provided by the prompts during the creation process. This ensures the environment is configured correctly. For comprehensive guidance on how to create, manage, and work with Anaconda environments, you can refer to the official Anaconda documentation (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). 
 
@@ -40,8 +40,7 @@ To set up your dedicated Anaconda environment, follow the step-by-step instructi
     conda activate Gene2Cere
     
 ### 4. Install the Python and R dependency packages necessary to run the scripts.
-Note: All Python dependency packages are listed in the key resources table. We have also provided two YAML files named ` Gene2Cere-env.yaml ` and ` requirements_r.yaml ` in the repository with the minimum environment to run the scripts.
-Note that for the installation of some R packages refer to requirements_r.yaml, which contains the r packages that need to be installed, and then install them using the   ` BiocManager::install("xxx ") ` command. If an error occurs, refer to the protocols Troubleshooting section.
+Note: All Python dependency packages are listed in the key resources table. We have also provided two YAML files named ‘‘Gene2Cere-env.yaml’’ and “requirements_r.yaml” in the repository with the minimum environment to run the scripts. Note that requirements_r.yaml contains some necessary r packages that need to be installed additionally (using the BiocManager::install("xxx") command). If any error occurs, refer to the Troubleshooting section for this protocol.
   
 ## Step2: Input preparation
 Select the path of your input file and obtain the gene expression matrix and the sample information matrix with IDPs will be generated in the example output file located in '/home/user/Gene2Cere/Output/'. This placement can be changed directly by providing output_dir=yourpath or by changing in the Gene2Cere.py script.
