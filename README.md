@@ -101,7 +101,7 @@ Note: The BrainSMASH step requires significant computational resources and memor
 
 ## Step4: Definition of GCIsig
 
-To filter out the genes that significantly contributed to the IDP rather than being associated by chance, the prediction is performed using the optimal PLSR model based on all AHBA transcriptomic samples. This will estimate the prediction coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP. Hence, we denote it as the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the surrogate maps produced by BrainSMASH 3. The set of genes that exhibits significant GCI is named GCIsig.
+To filter out the genes that significantly contributed to the IDP rather than being associated by chance, the prediction is performed using the optimal PLSR model based on all AHBA transcriptomic samples. This will estimate the prediction coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP. Hence, we denote it as the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the surrogate maps produced by BrainSMASH. The set of genes that exhibits significant GCI is named GCIsig.
 
     G2C.Step03_GCIsig(n_components, illustrative, n_permutations)
 
