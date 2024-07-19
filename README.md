@@ -92,27 +92,34 @@ Note: The n_permutations is the permutation times input by the user to test the 
 Note: The BrainSMASH step requires significant computational resources and memory. For example, with n_permutations=1000, the process requires around 150 GB of RAM at its peak. Ensure your system meets this requirement to avoid potential issues.
 
     G2C.Step02_Brainsmash(input_file, n_permutations) 
+    
     G2C.Step02_Brainsmash2IDP(n_permutations)
+    
     preds_name, score_name = G2C.Step02_Brainsmash2PLSR(n_components, median_index, n_permutations) 
+    
     G2C.Step02_Model_eval_visualization(n_components, cv_repeat, median_index, median_score) 
 
 ## Step4: Definition of GCIsig
 
-In this step the prediction is performed using the optimal PLSR model based on all samples. This, will estimate  the coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP, hence we denote it the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using 10,000 surrogate maps produced utilizing a spatial correlation preserving permutation procedure 3. The set of genes which exhibits significant GCI is named GCIsig.
+To filter out the genes that significantly contributed to the IDP rather than being associated by chance, the prediction is performed using the optimal PLSR model based on all AHBA transcriptomic samples. This will estimate the prediction coefficient of each gene. The coefficient represents the contribution index of each gene in predicting IDP. Hence, we denote it as the gene contribution indicator (GCI). We evaluate the significance of GCI by refitting the PLSR model using the surrogate maps produced by BrainSMASH 3. The set of genes that exhibits significant GCI is named GCIsig.
 
-    G2C.Step03_GCIsig(n_components, illustrative, n_permutations)
 
-## Step5: GSVA link GCIsig to IDPs 
+   G2C.Step03_GCIsig(n_components, illustrative, n_permutations)
 
+
+## Step5: GSVA link GCIsig to IDP
 ### 1. Preparation of the mgt file
+Note: This step involves downloading bioinformatics datasets via the Internet, including gene ontology (GO) 7,8, Kyoto Encyclopedia of Genes and Genomes (KEGG) 9, and cerebellar cell types data from DropViz 10. These datasets were later used to group GCIsig into gene sets based on biological functions. 
 
     R
 
-    source("/Gene2Cere/Toolbox/GSVA/GSVA_prep.R")
-
+    source("./Toolbox/GSVA/GSVA_prep.R")
+    
 ### 2. Run GSVA and visualization
+Note: This step transfers the genes × samples expression matrix into a genesets × samples enrichment score matrix based on the kernel estimation of the cumulative density function to show the variation in the gene set along with the samples. Last, differential analysis 11 was leveraged to obtain significantly expressed functional gene sets between different sample types.
 
-    source("/Gene2Cere/Script/Step04_GSVA.R", encoding = "UTF-8")
+    source("./Script/Step04_GSVA.R", encoding = "UTF-8")
+
 
 # Expected outcomes
 1. A csv file ` (Step01_Gene_expression.csv) `  containing the gene expression data for all cerebellar samples
@@ -125,10 +132,9 @@ In this step the prediction is performed using the optimal PLSR model based on a
 
 5. A png file ` (Step02_Comp_eval_visualization.png) `   illustrating the optimal number of components based on the nested 10-fold cross-validation, similar to Figure 1
 
-6. A csv file ` (Step02_PLSR_101x10cv_preds.csv) `  detailing the predictions from 101 repetitions of 10-fold cross-validation
+6. A csv file ` (Step02_PLSR_101x10cv_preds.csv) `  detailing the predictions from 101 repetitions of 10-fold cross-validation(take the cv_repeat=101 as an example)
 
-7. A png file ` (Step02_PLSR_101x10cv_r2median_20.png) `  showing the prediction performance, similar to Figure 2
-
+7. A png file ` (Step02_PLSR_101x10cv_r2median_20.png) `  showing the prediction performance (take the median_index=20 as an example), similar to Figure 2
 
 8. A csv file ` (Step03_GCIsig.csv) `  containing the GCI values and their significance after applying the BrainSMASH permutation procedure including correction for multiple comparisons
 
